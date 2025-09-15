@@ -14,19 +14,23 @@ const listMail = document.querySelector(".list-group");
 // settiamo ednpoint di API
 const endPointApi = `https://flynn.boolean.careers/exercises/api/random/mail`;
 
-// chiamata AJAX
-axios.get(endPointApi)
-    .then(rispApi => {
-        //codice da eseguire in caso di successo
-        const result = rispApi.data.response;
-        console.log(result);
-        
-        for (let index = 0; index < 10; index++) {
-            listMail.innerHTML = `<li class=list-group-item>${result}</li>`;
-        }
+//creiamo una variabile dove pushare ogni li
+let mailList = "";
 
-    })
-    .catch(error => {
-        // codice da eseguire in caso di errore
-        console.error(error)
-    })
+for (let index = 0; index < 10; index++) {
+    axios.get(endPointApi)
+        .then(rispApi => {
+            // codice da eseguire in caso di successo
+            const result = rispApi.data.response;
+            console.log(result);
+
+            // aggiungiamo la mail alla variabile stringa vuota
+            mailList += `<li class="list-group-item">${result}</li>`;
+            
+            listMail.innerHTML = mailList;
+        })
+        .catch(error => {
+            // codice da eseguire in caso di errore
+            console.error(error);
+        });
+}
