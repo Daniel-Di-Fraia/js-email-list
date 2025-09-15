@@ -17,8 +17,6 @@ const endPointApi = `https://flynn.boolean.careers/exercises/api/random/mail`;
 //richiamiamo il bottone
 const crea = document.querySelector(".btn");
 
-//creiamo una variabile dove pushare ogni li
-let mailList = "";
 
 //richiamiamo la funzione per le 10 mail in pagina
 generateMail();
@@ -28,6 +26,8 @@ crea.addEventListener('click',generateMail)
 
 //generiamo le 10 mail tramite una funzione
 function generateMail(){
+//creiamo una variabile dove pushare ogni li
+let mailList = "";
 for (let index = 0; index < 10; index++) {
     axios.get(endPointApi)
         .then(rispApi => {
