@@ -36,7 +36,7 @@ for (let index = 0; index < 10; index++) {
             console.log(result);
 
             // aggiungiamo la mail alla variabile stringa vuota
-            mailList += `<li class="list-group-item">${result}</li>`;
+            mailList += `<li class="list-group-item list-group-item-primary text-primary fs-4">${result}</li>`;
             
             listMail.innerHTML = mailList;
         })
